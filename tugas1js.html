@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Tugas 1 - Penghitung Luas Bangun Datar</title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; padding: 20px; }
+        .hasil { background: #f4f4f4; padding: 10px; border-left: 5px solid #333; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+    <h1>Hasil Perhitungan Luas</h1>
+    <div id="output"></div>
+
+    <script>
+        // 1. MENGHITUNG LUAS PERSEGI PANJANG
+        // Rumus: Panjang x Lebar
+        let panjang = 10;
+        let lebar = 5;
+        let luasPersegiPanjang = panjang * lebar; // Menggunakan operator perkalian (*)
+
+        // 2. MENGHITUNG LUAS BUJUR SANGKAT (PERSEGI)
+        // Rumus: Sisi x Sisi
+        let sisi = 4;
+        let luasBujurSangkar = sisi * sisi;
+
+        // 3. MENGHITUNG LUAS SEGITIGA
+        // Rumus: 0.5 x Alas x Tinggi
+        let alas = 8;
+        let tinggi = 6;
+        let luasSegitiga = 0.5 * alas * tinggi;
+
+        // Menampilkan hasil ke halaman HTML agar bisa dilihat di browser
+        let display = document.getElementById("output");
+        
+        display.innerHTML = `
+            <div class="hasil">
+                <strong>Persegi Panjang:</strong><br>
+                Panjang: ${panjang}, Lebar: ${lebar} <br>
+                Luas = ${luasPersegiPanjang}
+            </div>
+            
+            <div class="hasil">
+                <strong>Bujur Sangkar (Persegi):</strong><br>
+                Sisi: ${sisi} <br>
+                Luas = ${luasBujurSangkar}
+            </div>
+            
+            <div class="hasil">
+                <strong>Segitiga:</strong><br>
+                Alas: ${alas}, Tinggi: ${tinggi} <br>
+                Luas = ${luasSegitiga}
+            </div>
+        `;
+
+        // Menampilkan hasil di Konsol Browser (F12) sebagai tambahan
+        console.log("Luas Persegi Panjang:", luasPersegiPanjang);
+        console.log("Luas Bujur Sangkar:", luasBujurSangkar);
+        console.log("Luas Segitiga:", luasSegitiga);
+    </script>
+
+</body>
+</html>
