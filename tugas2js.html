@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Tugas 2 - Data Gaji Pegawai</title>
+    <style>
+        table { width: 80%; border-collapse: collapse; margin: 20px auto; font-family: Arial, sans-serif; }
+        th, td { border: 1px solid #333; padding: 10px; text-align: left; }
+        thead { background-color: #2c3e50; color: white; }
+        tfoot { background-color: #ecf0f1; font-weight: bold; }
+        h2 { text-align: center; }
+    </style>
+</head>
+<body>
+
+    <h2>Laporan Gaji Pegawai</h2>
+
+    <script>
+        // 1. DATA PEGAWAI (INPUT)
+        let nama = "Dodi Prayodi";
+        let umur = 25;
+        let jabatan = "manajer"; // Input dalam huruf kecil untuk memudahkan pengecekan
+        let status = "menikah";
+
+        // 2. LOGIKA GAJI POKOK (IF)
+        let gapok = 0;
+        if (jabatan === "manajer") {
+            gapok = 15000000;
+        } else if (jabatan === "asisten manajer") {
+            gapok = 10000000;
+        } else if (jabatan === "staff") {
+            gapok = 5000000;
+        }
+
+        // 3. LOGIKA TUNJANGAN & POTONGAN
+        let tunjanganJabatan = 0.15 * gapok; // 15% dari gapok
+        let bpjs = 0.10 * gapok;             // 10% dari gapok
+
+        // 4. LOGIKA TUNJANGAN KELUARGA (TERNARY)
+        // Jika status menikah, dapat 20% dari gapok. Jika tidak, dapat 0.
+        let tunjanganKeluarga = (status === "menikah") ? 0.20 * gapok : 0;
+
+        // 5. TOTAL GAJI
+        let totalGaji = gapok + tunjanganJabatan + tunjanganKeluarga - bpjs;
+
+        // FORMAT RUPIAH (Fungsi tambahan agar angka rapi)
+        const formatRupiah = (angka) => {
+            return "Rp " + angka.toLocaleString('id-ID');
+        };
+
+        // 6. CETAK KE TABEL HTML
+        document.write(`
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nama Pegawai</th>
+                        <th>Umur</th>
+                        <th>Jabatan</th>
+                        <th>Status</th>
+                        <th>Gaji Pokok</th>
+                        <th>Tunjangan Jabatan</th>
+                        <th>Tunjangan Keluarga</th>
+                        <th>BPJS (Potongan)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>${nama}</td>
+                        <td>${umur} Tahun</td>
+                        <td>${jabatan.charAt(0).toUpperCase() + jabatan.slice(1)}</td>
+                        <td>${status.charAt(0).toUpperCase() + status.slice(1)}</td>
+                        <td>${formatRupiah(gapok)}</td>
+                        <td>${formatRupiah(tunjanganJabatan)}</td>
+                        <td>${formatRupiah(tunjanganKeluarga)}</td>
+                        <td>- ${formatRupiah(bpjs)}</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="7" style="text-align: right;">Total Gaji Bersih (Take Home Pay)</td>
+                        <td>${formatRupiah(totalGaji)}</td>
+                    </tr>
+                </tfoot>
+            </table>
+        `);
+    </script>
+
+</body>
+</html>
